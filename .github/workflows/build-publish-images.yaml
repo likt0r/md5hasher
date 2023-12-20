@@ -17,13 +17,9 @@ jobs:
       - name: "Set Image Base Name"
         run: echo "IMAGE_NAME=ghcr.io/${{ github.repository_owner }}/md5hasher" >> $GITHUB_ENV
 
-      # Extract Version
-      - name: "Extract Version from package.json"
-        run: echo "PACKAGE_VERSION=ghcr.io/${{ github.repository_owner }}/md5hasher" >> $GITHUB_ENV
-
       # Set tags for the main branch
       - name: Set Tags
-        run: echo "TAGS=${{ env.IMAGE_NAME }}:${{env.COMMIT_HASH}},${{ env.IMAGE_NAME }}:v${{env.PACKAGE_VERSION}},${{ env.IMAGE_NAME }}:latest" >> $GITHUB_ENV
+        run: echo "TAGS=${{ env.IMAGE_NAME }}:${{env.COMMIT_HASH}},${{ env.IMAGE_NAME }}:latest" >> $GITHUB_ENV
 
       # Login into ghcr.io as action
       - name: Docker Login
