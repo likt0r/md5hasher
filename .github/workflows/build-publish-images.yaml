@@ -22,14 +22,8 @@ jobs:
         run: echo "PACKAGE_VERSION=ghcr.io/${{ github.repository_owner }}/md5hasher" >> $GITHUB_ENV
 
       # Set tags for the main branch
-      - name: Set Production Tags
-        if: github.ref == 'refs/heads/production'
+      - name: Set Tags
         run: echo "TAGS=${{ env.IMAGE_NAME }}:${{env.COMMIT_HASH}},${{ env.IMAGE_NAME }}:v${{env.PACKAGE_VERSION}},${{ env.IMAGE_NAME }}:latest" >> $GITHUB_ENV
-
-      # Set tag for development branches
-      - name: Set Dev Tag
-        if: github.ref != 'refs/heads/production'
-        run: echo "TAGS=${{ env.IMAGE_NAME }}:${{env.COMMIT_HASH}}-dev,${{ env.IMAGE_NAME }}:latest-dev" >> $GITHUB_ENV
 
       # Login into ghcr.io as action
       - name: Docker Login
