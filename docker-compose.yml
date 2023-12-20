@@ -4,4 +4,4 @@ services:
   vueapp:
     build: .
     ports:
-      - "8080:80"
+      - "8033:80"
