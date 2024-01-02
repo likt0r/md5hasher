@@ -10,7 +10,8 @@
         ></v-switch>
         <v-btn color="primary" @click="generateHash">Generate MD5 Hash</v-btn>
         <h1 v-if="hash" class="mt-8 text-center" style="word-wrap: break-word">
-          <span class="highlight">{{ hash.substring(0, 12) }}</span
+          <span class="highlight-2">{{ hash.substring(0, 8) }}</span>
+          <span class="highlight">{{ hash.substring(8, 12) }}</span
           ><br />{{ hash.substring(12) }}
         </h1>
       </v-col>
@@ -38,6 +39,10 @@ function generateHash() {
 </script>
 
 <style>
+.highlight-2 {
+  color: lawngreen;
+  font-weight: bold;
+}
 .highlight {
   color: red;
   font-weight: bold;
