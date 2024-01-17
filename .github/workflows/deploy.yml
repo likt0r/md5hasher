@@ -1,0 +1,20 @@
+name: FF-API | Deploy
+
+on:
+  workflow_run:
+    workflows: [FF-API | Build & Push Docker Images]
+    types: [completed]
+    branches: [main, production]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to Production Environment
+        uses: faktenforum/portami@main
+        with:
+          endpoint: ${{ vars.PACZKA_PORTAINER_URL }}
+          access_token: ${{ secrets.PACZKA_PORTAINER_ACCESSTOKEN }}
+          stack_name: "faktenforum"
+          prune: false
+          pull: true

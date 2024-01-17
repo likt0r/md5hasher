@@ -19,7 +19,7 @@ jobs:
 
       # Set tags for the main branch
       - name: Set Tags
-        run: echo "TAGS= ${{ env.IMAGE_NAME }}:latest" >> $GITHUB_ENV
+        run: echo "TAGS=${{ env.IMAGE_NAME }}:${{env.COMMIT_HASH}}, ${{ env.IMAGE_NAME }}:latest" >> $GITHUB_ENV
 
       # Login into ghcr.io as action
       - name: Docker Login
